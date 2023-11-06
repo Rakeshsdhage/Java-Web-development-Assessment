@@ -1,0 +1,88 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .calculator {
+            width: 500px;
+            margin: 0 auto;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: indianred;
+        }
+        input[type="text"], input[type="button"] {
+            width: 80px;
+            height: 80px;
+            margin: 5px;
+            font-size: 20px;
+        }
+        #display{
+            width:450px;
+            color:black;
+            background-color: white;
+        }
+        #ac{
+background-color: cornflowerblue;
+color: white;
+        }
+        #operations{
+            background-color: darkslategrey;
+color: white;
+        }
+        #numbers{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Basic Calculator</h1>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <br> <br><br>
+        <input type="button" value="7" id="numbers" onclick="appendToDisplay('7')">
+        <input type="button" value="8" id="numbers"  onclick="appendToDisplay('8')">
+        <input type="button" value="9" id="numbers" onclick="appendToDisplay('9')">
+        <input type="button" value="+" id="operations" onclick="appendToDisplay('+')">
+        <br>
+        <input type="button" value="4" id="numbers" onclick="appendToDisplay('4')">
+        <input type="button" value="5" id="numbers" onclick="appendToDisplay('5')">
+        <input type="button" value="6" id="numbers" onclick="appendToDisplay('6')">
+        <input type="button" value="-"  id="operations" onclick="appendToDisplay('-')">
+        <br>
+        <input type="button" value="1" id="numbers" onclick="appendToDisplay('1')">
+        <input type="button" value="2" id="numbers" onclick="appendToDisplay('2')">
+        <input type="button" value="3"id="numbers"  onclick="appendToDisplay('3')">
+        <input type="button" value="/"  id="operations" onclick="appendToDisplay('/')">
+        <br>
+        <input type="button" value="AC" id="ac"onclick="clearDisplay()">
+        <input type="button" value="0" id="numbers"  onclick="appendToDisplay('0')">
+        <input type="button" value="="id="numbers" onclick="calculate()">
+        <input type="button" value="*"  id="operations" onclick="appendToDisplay('*')">
+    </div>
+    
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculate() {
+            try {
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>

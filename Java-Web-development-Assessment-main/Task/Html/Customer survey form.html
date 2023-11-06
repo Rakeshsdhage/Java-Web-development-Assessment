@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <script>
+        function validateForm() {
+            var firstName = document.getElementById("first-name").value;
+            var lastName = document.getElementById("last-name").value;
+            var dob = document.getElementById("date-of-birth").value;
+            var country = document.getElementById("country").value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var profession = document.getElementById("profession").value;
+            var email = document.getElementById("email").value;
+            var mobileNumber = document.getElementById("mobile-number").value;
+
+            if (firstName === "" || lastName === "" || dob === "" || country === "default" || !gender || profession === "" || email === "" || mobileNumber === "") {
+                alert("All fields are required. Please fill out all the fields.");
+                return false;
+            }
+
+            var selectedGender = gender.value;
+
+            var popupMessage = "First Name: " + firstName + "\n" +
+                "Last Name: " + lastName + "\n" +
+                "Date of Birth: " + dob + "\n" +
+                "Country: " + country + "\n" +
+                "Gender: " + selectedGender + "\n" +
+                "Profession: " + profession + "\n" +
+                "Email: " + email + "\n" +
+                "Mobile Number: " + mobileNumber;
+
+            alert("Survey Form Submitted:\n\n" + popupMessage);
+            return true;
+        }
+    </script>
+    <style>
+        body{
+            padding-left: 50px;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+    <h1>Survey Form</h1>
+
+    <form onsubmit="return validateForm()">
+        <label for="first-name">First Name:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" id="first-name" required><br><br>
+
+        <label for="last-name">Last Name:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" id="last-name" required><br><br>
+
+        <label for="date-of-birth">Date of Birth:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="date" id="date-of-birth" required><br><br>
+
+        <label for="country">Country:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <select id="country" required>
+            <option value="default" disabled selected>Select a country</option>
+            <option value="INDIA">INDIA</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+        </select><br><br>
+
+        <label>Gender:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="radio" id="male" name="gender" value="Male" required>
+        <label for="male">Male</label>
+        &nbsp;<input type="radio" id="female" name="gender" value="Female" required>
+        <label for="female">Female</label><br><br>
+
+        <label for="profession">Profession:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" id="profession" required><br><br>
+
+        <label for="email">Email:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="email" id="email" required><br><br>
+
+        <label for="mobile-number">Mobile Number:</label>
+        <input type="tel" id="mobile-number" required><br><br>
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+
+</body>
+</html>
